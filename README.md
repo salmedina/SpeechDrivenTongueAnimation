@@ -9,15 +9,15 @@ The data can be downloaded from this [link](https://drive.google.com/file/d/1Akb
 ## Installation
 
 ## Pipeline
-# 1. Audio Feature Extraction
+### 1. Audio Feature Extraction
 
-# 2. Building the dataset
+### 2. Building the dataset
 
-# 3. Training the model
+### 3. Training the model
 
-# 4. Testing the model
+### 4. Testing the model
 
-# 5. Visualizing the results
+### 5. Visualizing the results
 
 ## Citation
 
