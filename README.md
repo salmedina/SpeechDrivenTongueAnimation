@@ -8,7 +8,19 @@ The data can be downloaded from this [link](https://drive.google.com/file/d/1Akb
 
 ## Installation
 
+## Dependencies
+
+Our best model uses Wav2Vec audio features. For this you need to [download the model](https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_large.pt) from the [Fairseq repository](https://github.com/pytorch/fairseq/blob/main/examples/wav2vec/README.md) and place it under the models folder.
+
 ## Pipeline
+
+Our pipeline consists of the following stage:
+1. Extract audio features from wav2vec model
+2. Build the dataset to train the model
+3. Train the landmark prediction model
+4. Evaluate the model
+5. Visualize the model
+
 ### 1. Audio Feature Extraction
 
 ### 2. Building the dataset
