@@ -1,5 +1,8 @@
 
 # Speech Driven Tongue Animation
+
+![banner](images/banner.png)
+
 This project aims to animate the tongue and jaw from EMA data through an ML approach.
 
 ## Data
@@ -9,6 +12,8 @@ The data can be downloaded from this [link](https://drive.google.com/file/d/1Akb
 ## Installation
 
 ## Dependencies
+
+### Wav2Vec
 
 Our best model uses Wav2Vec audio features. For this you need to [download the model](https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_large.pt) from the [Fairseq repository](https://github.com/pytorch/fairseq/blob/main/examples/wav2vec/README.md) and place it under the models folder.
 
