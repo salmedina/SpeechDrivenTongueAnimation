@@ -1,6 +1,6 @@
 
-# SpeechDrivenTongueAnimation
-This project animates the tongue and jaw from EMA data through a ML approach.
+# Speech Driven Tongue Animation
+This project aims to animate the tongue and jaw from EMA data through an ML approach.
 
 ## Data
 
