@@ -1,0 +1,10 @@
+# VSCode
+.vscode/
+
+# Data and features
+TongueMocapData/
+
+# Models
+models/wav2vec_large.pt
+
+
