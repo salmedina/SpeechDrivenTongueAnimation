@@ -3,7 +3,6 @@ from pathlib import Path
 
 import numpy as np
 from easydict import EasyDict as edict
-from ruamel.yaml import YAML
 from tqdm import tqdm
 
 
@@ -12,6 +11,8 @@ def parse_args():
     parser.add_argument('-f', '--feats_dir', type=str,
                         help='')
     parser.add_argument('-e', '--ema_dir', type=str,
+                        help='')
+    parser.add_argument('-i', '--index_dir', type=str,
                         help='')
     parser.add_argument('-o', '--output_dir', type=str,
                         help='')
@@ -28,37 +29,34 @@ def build_data_dict(idx_list: list,
                     ema_dir: str) -> dict:
 
     x_list, y_pos_list = list(), list()
-    frames_list = list()
+    num_frames_list = list()
     for sid in tqdm(idx_list):
-        # Load the audio features and arrange them accordingly
+        # Load the audio features and the EMA data
         feat_data = np.load(Path(feat_dir, f'{sid}.npy'), allow_pickle=True)
-
-        # Load the ema data
         ema_data = np.load(Path(ema_dir, f'{sid}.npy'), allow_pickle=True)
 
+        # Some frames might have been dropped 
+        # since we concatenated the audio features
         min_idx_len = min(len(ema_data), len(feat_data))
 
-        frames_list.append(min_idx_len)
+        num_frames_list.append(min_idx_len)
         x_list.append(feat_data[:min_idx_len])
         y_pos_list.append(ema_data[:min_idx_len])
-        
 
     return dict(ids=idx_list,
-                frames=frames_list,
+                frames=num_frames_list,
                 X=np.array(x_list),
                 Y_pos=np.array(y_pos_list))
 
 
 def main(args: edict) -> None:
-
-    # Training dataset
+    # --- Training dataset ---
     print('Building training dataset')
-    train_save_path = Path(args.dataset_dir, args.save_path.train)
+    train_idx_path = Path(args.index_dir) / 'train.lst'
+    train_save_path = Path(args.output_dir) / 'train_dataset.npy'
     train_save_path.parent.mkdir(exist_ok=True)
-    train_idx_list = load_index_list(Path(args.dataset_dir,
-                                          args.index.train).
-                                     absolute().
-                                     as_posix())
+
+    train_idx_list = load_index_list(train_idx_path)
     train_dataset = build_data_dict(idx_list=train_idx_list,
                                     feat_dir=args.feats_dir,
                                     ema_dir=args.ema_dir)
@@ -66,20 +64,18 @@ def main(args: edict) -> None:
     np.save(train_save_path, train_dataset)
     del train_dataset
 
-    # Validation dataset
-    print('Building validation dataset')
-    valid_save_path = Path(args.dataset_dir, args.save_path.valid)
-    valid_save_path.parent.mkdir(exist_ok=True)
-    valid_idx_list = load_index_list(Path(args.dataset_dir,
-                                          args.index.valid).
-                                     absolute().
-                                     as_posix())
-    valid_dataset = build_data_dict(idx_list=valid_idx_list,
+    # --- Test dataset ---
+    print('Building test dataset')
+    test_save_path = Path(args.output_dir) / 'test_dataset.npy'
+    test_save_path.parent.mkdir(exist_ok=True)
+    test_idx_path = Path(args.index_dir) / 'test.lst'
+    test_idx_list = load_index_list(test_idx_path)
+    test_dataset = build_data_dict(idx_list=test_idx_list,
                                     feat_dir=args.feats_dir,
                                     ema_dir=args.ema_dir)
 
-    np.save(valid_save_path, valid_dataset)
-    del valid_dataset
+    np.save(test_save_path, test_dataset)
+    del test_dataset
 
 
 if __name__ == '__main__':
