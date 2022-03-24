@@ -7,10 +7,8 @@ during the training phase, by storing errors, images, etc.
 
 """
 import os
-import torch
-from torch.autograd import Variable
 from torch.utils.tensorboard import SummaryWriter
-from utils.io import ensure_dir
+
 
 __all__ = [
     'ModelLogger',
@@ -19,12 +17,12 @@ __all__ = [
 
 class ModelLogger:
     """
-    Logger, used by BaseTrainer to save training history
+    Logger used used to save training history
     """
 
     def __init__(self, dir_path, training_name):
         self.dir_path = dir_path
-        ensure_dir(self.dir_path)
+        os.makedirs(self.dir_path, exist_ok=True)
         self.training_name = training_name
 
         self.train = SummaryWriter(
@@ -32,17 +30,7 @@ class ModelLogger:
         self.val = SummaryWriter(
             os.path.join(self.dir_path, 'val'), comment=self.training_name)
 
-    def add_graph_definition(self, model):
-        """Add graph
-
-        Arguments:
-            model {Model} -- model
-        """
-
-        dummy_input = Variable(torch.rand(1, 3, 224, 224))
-        self.train.add_graph(model, dummy_input)
-
     def close_all(self):
-        """Close"""
+        """Close both SummaryWriters"""
         self.train.close()
         self.val.close()
