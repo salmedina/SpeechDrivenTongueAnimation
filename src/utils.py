@@ -2,8 +2,24 @@
 '''
 author: Salvador Medina
 '''
+import os
+import random
+import numpy as np
 import torch
 import soundfile as sf
+
+
+def seed_everything(seed: int):
+    """ Seed all random number generators
+
+    Args:
+        seed (int): Seed number for all random numbergenerators
+    """
+    os.environ["PL_GLOBAL_SEED"] = str(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
 
 
 def init_torch_device(gpu_id=-1):
