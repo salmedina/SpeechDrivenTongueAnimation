@@ -5,9 +5,14 @@
 
 This project aims to animate the tongue and jaw from EMA data through an ML approach.
 
+**Links**: [\[Webpage\]](https://salmedina.github.io/papers/tongue-anim) | [\[Paper\]]() | [\[Video\]]() | [\[Data\]](https://drive.google.com/file/d/1AkbLsj41ftc56HNPWAI-Y26-QK4Bqbo9/view?usp=sharing)
+
 ## Data
 
-The data can be downloaded from this [link](https://drive.google.com/file/d/1AkbLsj41ftc56HNPWAI-Y26-QK4Bqbo9/view?usp=sharing).
+The data can be downloaded from this [link](https://drive.google.com/file/d/1AkbLsj41ftc56HNPWAI-Y26-QK4Bqbo9/view?usp=sharing). The dataset includes:
+- Mono audio in `wav` format with a sample rate of 16 kHz
+- EMA 3D landmark sequences @ 50 FPS
+- Audio transcripts
 
 ## Installation
 
