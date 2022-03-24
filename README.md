@@ -11,7 +11,12 @@ The data can be downloaded from this [link](https://drive.google.com/file/d/1Akb
 
 ## Installation
 
-## Dependencies
+### Conda Environment
+
+Create the conda environment from the yaml file `envs/tongueanim.yaml`
+```
+conda create -f envs/tongueanim.yaml
+```
 
 ### Wav2Vec
 
