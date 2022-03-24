@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+'''
+author: Salvador Medina
+'''
 import argparse
 from pathlib import Path
 
 import numpy as np
-from easydict import EasyDict as edict
 from tqdm import tqdm
 
 
@@ -49,7 +52,7 @@ def build_data_dict(idx_list: list,
                 Y_pos=np.array(y_pos_list))
 
 
-def main(args: edict) -> None:
+def main(args) -> None:
     # --- Training dataset ---
     print('Building training dataset')
     train_idx_path = Path(args.index_dir) / 'train.lst'
@@ -79,5 +82,5 @@ def main(args: edict) -> None:
 
 
 if __name__ == '__main__':
-    args = edict(parse_args())
+    args = parse_args()
     main(args)
