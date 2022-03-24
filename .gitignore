@@ -7,6 +7,9 @@ TongueMocapData/
 # Models
 models/wav2vec_large.pt
 
+# Cache
+ src/__pycache__/
+
 # Misc
 *.zip
 *.tar.gz
