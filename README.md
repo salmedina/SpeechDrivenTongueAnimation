@@ -5,7 +5,7 @@
 
 > Advances in speech driven animation techniques now allow creating convincing animations of virtual characters solely from audio data. While many approaches focus on facial and lip motion, they often do not provide realistic animation of the inner mouth. Performance or motion capture of the tongue and jaw from video alone is difficult because the inner mouth is only partially observable during speech. In this work, we collected a large-scale speech to tongue mocap dataset that focuses on capturing tongue, jaw, and lip motion during speech. This dataset enables research on data-driven techniques for realistic inner mouth animation. We present a method that leverages recent deep-learning based audio feature representations to build a robust and generalizable speech to animation pipeline. We find that self-supervised deep learning based audio feature encoders are robust and generalize well to unseen speakers and content.
 
-**Links**: [\[Webpage\]](https://salmedina.github.io/papers/tongue-anim) | [\[Paper\]]() | [\[Video\]]() | [\[Data\]](https://drive.google.com/file/d/1AkbLsj41ftc56HNPWAI-Y26-QK4Bqbo9/view?usp=sharing)
+**Links**: [\[Project\]](https://salmedina.github.io/tongue-anim) | [\[Paper\]]() | [\[Video\]]() | [\[Data\]](https://drive.google.com/file/d/1AkbLsj41ftc56HNPWAI-Y26-QK4Bqbo9/view?usp=sharing)
 
 ## Data
 
