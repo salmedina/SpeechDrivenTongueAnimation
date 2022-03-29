@@ -63,3 +63,5 @@ If you find this work useful on your research, please cite our work:
 ## License
 
 Our code is released under MIT License.
+
+The license agreement for the data usage implies citation of the paper. Please notice that citing the dataset URL instead of the publication would not be compliant with this license agreement.
